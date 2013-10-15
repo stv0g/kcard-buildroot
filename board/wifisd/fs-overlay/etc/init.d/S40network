@@ -1,0 +1,13 @@
+#!/bin/ash
+
+start() {
+    ifconfig mlan0 192.168.1.1 netmask 255.255.255.0 up
+    iwconfig mlan0 power off
+    sleep 2
+}
+
+stop() {
+    true
+}
+
+. /etc/init.d/simple-init.sh

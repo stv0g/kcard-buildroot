@@ -1,0 +1,13 @@
+#!/bin/ash
+
+start() {
+    tcpsvd -vE 0.0.0.0 21 ftpd /mnt &
+    echo $! > /var/run/ftpd.pid
+}
+
+stop() {
+    kill $(cat /var/run/ftpd.pid)
+    rm /var/run/ftpd.pid
+}
+
+. /etc/init.d/simple-init.sh

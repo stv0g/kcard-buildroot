@@ -1,0 +1,13 @@
+#!/bin/ash
+
+start() {
+    httpd -h /mnt
+    echo $! > /var/run/httpd.pid
+}
+
+stop() {
+    kill $(cat /var/run/httpd.pid)
+    rm /var/run/httpd.pid
+}
+
+. /etc/init.d/simple-init.sh

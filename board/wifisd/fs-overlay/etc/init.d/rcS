@@ -1,0 +1,22 @@
+#!/bin/ash
+
+# run /mnt/sd/pre-init.sh if it exists
+[ -f /mnt/sd/pre-init.sh ] && /bin/ash /mnt/sd/pre-init.sh
+
+# rename /mnt/sd/program.bin if it's there
+[ -f /mnt/sd/program.bin ] && mv /mnt/sd/program.bin /mnt/sd/program.bin.disabled
+
+
+# Start all init scripts in /etc/init.d
+# executing them in numerical order.
+for i in /etc/init.d/S??* ;do
+    [ -f "$i" -a -x "$i" ] && $i start
+done
+
+
+# run /mnt/sd/autorun.sh if it exists
+[ -f /mnt/sd/autorun.sh ] && /bin/ash /mnt/sd/autorun.sh
+
+# run /mnt/sd/post-init.sh if it exists
+[ -f /mnt/sd/post-init.sh ] && /bin/ash /mnt/sd/post-init.sh
+

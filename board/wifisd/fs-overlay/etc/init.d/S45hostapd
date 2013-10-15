@@ -1,0 +1,14 @@
+#!/bin/ash
+
+start() {
+    hostapd -B /etc/hostapd.conf
+    echo $! > /var/run/hostapd.pid
+    sleep 2
+}
+
+stop() {
+    kill $(cat /var/run/hostapd.pid)
+    rm /var/run/hostapd.pid
+}
+
+. /etc/init.d/simple-init.sh
