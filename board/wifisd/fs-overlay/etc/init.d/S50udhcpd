@@ -1,12 +1,5 @@
 #!/bin/ash
 
-start() {
-    udhcpd /etc/udhcpd.conf
-}
-
-stop() {
-    kill $(cat /var/run/udhcpd.pid)
-    rm /var/run/udhcpd.pid
-}
+CMD="udhcpd -f /etc/udhcpd.conf"
 
 . /etc/init.d/simple-init.sh

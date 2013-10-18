@@ -2,17 +2,13 @@
 
 RSA_KEY="/etc/dropbear_rsa_host_key"
 DSS_KEY="/etc/dropbear_dss_host_key"
-PORT=0.0.0.0:22
+PORT="0.0.0.0:22"
 
-start() {
-    [ ! -f "$RSA_KEY" ] && dropbearkey -t rsa -f "$RSA_KEY" > /dev/null 2>&1
-    [ ! -f "$DSS_KEY" ] && dropbearkey -t dss -f "$DSS_KEY" > /dev/null 2>&1
-    umask 077
-    dropbear -P /var/run/dropbear.pid -B -r "$RSA_KEY" -d "$DSS_KEY" -p $PORT
-}
+[ ! -f "$RSA_KEY" ] && dropbearkey -t rsa -f "$RSA_KEY" > /dev/null 2>&1
+[ ! -f "$DSS_KEY" ] && dropbearkey -t dss -f "$DSS_KEY" > /dev/null 2>&1
 
-stop() {
-    start-stop-daemon -K -q -p /var/run/dropbear.pid
-}
+umask 077
+
+CMD="dropbear -r $RSA_KEY -d $DSS_KEY -p $PORT"
 
 . /etc/init.d/simple-init.sh

@@ -1,14 +1,7 @@
 #!/bin/ash
 
-start() {
-    cd /root
-    telnetd -l /bin/ash
-    echo $! > /var/run/telnetd.pid
-}
+cd /root
 
-stop() {
-    kill $(cat /var/run/telnetd.pid)
-    rm /var/run/telnetd.pid
-}
+CMD="telnetd -F -l /bin/ash"
 
 . /etc/init.d/simple-init.sh
