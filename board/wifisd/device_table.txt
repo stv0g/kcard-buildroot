@@ -9,9 +9,11 @@
 /dev                         d    755    0    0    -    -    -    -    -
 /tmp                         d    1777   0    0    -    -    -    -    -
 /etc                         d    755    0    0    -    -    -    -    -
+/mnt/sd                      d    755    0    0    -    -    -    -    -
+/mnt/mtd                     d    755    0    0    -    -    -    -    -
+/home/default                d    755    1000 1000 -    -    -    -    -
 /usr/share/mtd/etc           d    755    0    0    -    -    -    -    -
 /usr/share/mtd/root          d    700    0    0    -    -    -    -    -
-/usr/share/default           d    755    1000 1000 -    -    -    -    -
 /usr/share/mtd/etc/shadow    f    600    0    0    -    -    -    -    -
 /usr/share/mtd/etc/passwd    f    644    0    0    -    -    -    -    -
 
