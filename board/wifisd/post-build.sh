@@ -14,6 +14,6 @@ ln -s /mnt/mtd/root root
 rm -rf etc/network
 mv etc usr/share/mtd/
 mkdir etc
-mv usr/share/mtd/etc/inittab etc
-mv usr/share/mtd/etc/fstab etc
+cp usr/share/mtd/etc/inittab etc
+cp usr/share/mtd/etc/fstab etc
 
