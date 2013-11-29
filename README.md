@@ -3,11 +3,14 @@ kcard-buildroot
 
 Buildroot configuration for building a custom rootfs for KeyASIC WifiSD based cards. This does not currently build a kernel, but that is [planned](https://github.com/dankrause/kcard-buildroot/issues/9). Check the [releases](https://github.com/dankrause/kcard-buildroot/releases) section for pre-built images that are ready to use immediately.
 
-To build your own image on Ubuntu derivatives:
+To build your own image on Ubuntu/RHEL/Centos derivatives:
 
 ```bash
 # install buildroot dependencies (this list may be incomplete - contributions welcome)
+# Using apt-get:
 sudo apt-get install build-essential bison flex gettext libncurses5-dev texinfo autoconf automake libtool
+# OR using Yum:
+sudo yum install subversion make gcc ncurses-devel bison flex gawk bc vim-common
 
 # download and extract buildroot 2013.08.1
 wget http://buildroot.uclibc.org/downloads/buildroot-2013.08.1.tar.bz2
