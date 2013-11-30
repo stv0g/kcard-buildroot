@@ -19,3 +19,5 @@ OUT="$1/initramfs3.gz"
 # FIXME: printf gets the byte order wrong here on a big endian system
 printf "0: 4b41475a%.8x" $(wc -c < "$IN") | xxd -r -g0 | cat - "$IN" > "$OUT"
 
+# Automating /etc workaround: https://github.com/dankrause/kcard-buildroot/issues/4
+cp -an $TARGET_DIR/usr/share/mtd/etc/* $TARGET_DIR/etc
